@@ -102,6 +102,8 @@ grep -A50 'table_prefix' $install_dir/wp-config.php > /tmp/wp-tmp-config
 
 ######Set max upload file size from 2M to 65M
 sed -i 's/2M/65M/' /etc/php/8.0/apache2/php.ini
+
+systemctl restart apache2
  
 ######Display generated passwords to log file.
 echo "Database Name: " $db_name
