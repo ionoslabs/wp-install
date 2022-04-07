@@ -99,6 +99,9 @@ grep -A50 'table_prefix' $install_dir/wp-config.php > /tmp/wp-tmp-config
 /usr/bin/mysql -u root -e "CREATE DATABASE $db_name"
 /usr/bin/mysql -u root -e "CREATE USER '$db_name'@'localhost' IDENTIFIED WITH mysql_native_password BY '$db_password';"
 /usr/bin/mysql -u root -e "GRANT ALL PRIVILEGES ON $db_name.* TO '$db_user'@'localhost';"
+
+######Set max upload file size from 2M to 65M
+sed -i 's/2M/65M/' /etc/php/8.0/apache2/php.ini
  
 ######Display generated passwords to log file.
 echo "Database Name: " $db_name
